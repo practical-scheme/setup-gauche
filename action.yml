@@ -12,5 +12,5 @@ inputs:
 runs:
   using: 'composite'
   steps:
-    - run: download-and-install-gauche.sh ${{ inputs.gauche-version }} ${{ inputs.test-gauche }}
+    - run: ./download-and-install-gauche.sh ${{ inputs.gauche-version }} ${{ inputs.test-gauche }}
       shell: bash
