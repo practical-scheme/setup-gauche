@@ -12,6 +12,8 @@ inputs:
 runs:
   using: 'composite'
   steps:
+    - run: sudo apt install -yq libgdbm-dev
+      shell: bash
     - run: echo "${{ github.action_path }}" >> $GITHUB_PATH
       shell: bash
     - run: download-and-install-gauche.sh
