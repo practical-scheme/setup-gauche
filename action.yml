@@ -12,5 +12,5 @@ inputs:
 runs:
   using: 'composite'
   steps:
-    - run: ./download-and-install-gauche.sh
+    - run: download-and-install-gauche.sh
       shell: bash
