@@ -1,0 +1,16 @@
+name: 'Setup Gauche'
+description: 'Install Gauche'
+inputs:
+  gauche-version:
+    description: "The version of Gauche to install.  Can be 'latest' for the latest release, or 'snapshot' for the latest snapshot."
+    required: false
+    default: 'latest'
+  test-gauche:
+    description: "Set this true to perform integrity test for installed Gauche.  Usually unnecessary."
+    required: false
+    default: 'false'
+runs:
+  using: 'composite'
+  steps:
+    - run: download-and-install-gauche.sh ${{ inputs.gauche-version }} ${{ inputs.test-gauche }}
+      shell: bash
