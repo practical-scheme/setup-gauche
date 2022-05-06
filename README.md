@@ -1,9 +1,10 @@
 # setup-gauche v1
 
-This action downloads and installs Gauche, so that your subsequent
-workflow can use it.
+This action downloads and installs [Gauche](https://practical-scheme.net/gauche/),
+so that your subsequent workflow can use it.
 
 Currently it only works on Linux (Debian, Ubuntu) platform.
+GDBM library is also installed, so that `dbm.gdbm` is available.
 
 # Usage
 
