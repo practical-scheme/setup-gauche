@@ -1,4 +1,4 @@
-# setup-gauche v1
+# setup-gauche
 
 This action downloads and installs [Gauche](https://practical-scheme.net/gauche/),
 so that your subsequent workflow can use it.
@@ -9,7 +9,7 @@ GDBM library is also installed, so that `dbm.gdbm` is available.
 # Usage
 
 ```yaml
-- uses: shirok/setup-gauche@v1
+- uses: shirok/setup-gauche@v2
   with:
     # The version of Gauche to install.  Can be 'latest' for the latest
     # release, or 'snapshot' for the latest snapshot.  The default is
