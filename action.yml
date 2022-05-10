@@ -12,7 +12,11 @@ inputs:
 runs:
   using: 'composite'
   steps:
-    - run: sudo apt install -yq libgdbm-dev
+    - run: |
+        if [ "${{ runner.os }}" = "linux" ]; then
+           sudo apt install -y libgdbm-dev
+        fi
+        # Note: OSX runner already has gdbm
       shell: bash
     - run: echo "${{ github.action_path }}" >> $GITHUB_PATH
       shell: bash

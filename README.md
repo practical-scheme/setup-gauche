@@ -3,7 +3,7 @@
 This action downloads and installs [Gauche](https://practical-scheme.net/gauche/),
 so that your subsequent workflow can use it.
 
-Currently it only works on Linux (Debian, Ubuntu) platform.
+Currently it only works on Linux (Debian, Ubuntu) and OSX platforms.
 GDBM library is also installed, so that `dbm.gdbm` is available.
 
 # Usage
