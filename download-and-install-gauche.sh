@@ -3,8 +3,7 @@ if [ -z "$version" ]; then
     version=latest
 fi
 
-echo "INPUT_GAUCHE_VERSION=$version"
-echo "INPUT_TEST_GAUCHE=$INPUT_TEST_GAUCHE"
+env
 
 curl -f -o get-gauche.sh https://raw.githubusercontent.com/shirok/get-gauche/master/get-gauche.sh
 chmod +x get-gauche.sh
