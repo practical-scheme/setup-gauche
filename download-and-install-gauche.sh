@@ -1,9 +1,9 @@
-version=$INPUT_GAUCHE_VERSION
+version=$1
 if [ -z "$version" ]; then
     version=latest
 fi
 
-env
+do_test=$2
 
 curl -f -o get-gauche.sh https://raw.githubusercontent.com/shirok/get-gauche/master/get-gauche.sh
 chmod +x get-gauche.sh
@@ -15,7 +15,7 @@ case `uname` in
         prefix=/usr;;
 esac
 
-if [ "$INPUT_TEST_GAUCHE" = 'true' ]; then
+if [ "$do_test" = 'true' ]; then
     ./get-gauche.sh --sudo --auto --prefix=$prefix --version=$version
 else
     ./get-gauche.sh --sudo --auto --prefix=$prefix --version=$version --skip-tests

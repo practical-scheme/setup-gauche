@@ -1,11 +1,11 @@
 name: 'Setup Gauche'
 description: 'Install Gauche'
 inputs:
-  gauche_version:
+  gauche-version:
     description: "The version of Gauche to install.  Can be 'latest' for the latest release, or 'snapshot' for the latest snapshot."
     required: false
     default: 'latest'
-  test_gauche:
+  test-gauche:
     description: "Set this true to perform integrity test for installed Gauche.  Usually unnecessary."
     required: false
     default: 'false'
@@ -20,5 +20,5 @@ runs:
       shell: bash
     - run: echo "${{ github.action_path }}" >> $GITHUB_PATH
       shell: bash
-    - run: download-and-install-gauche.sh
+    - run: download-and-install-gauche.sh ${{ inputs.gauche-version }} ${{ inputs.test-gauche }}
       shell: bash
