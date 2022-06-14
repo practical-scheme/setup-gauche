@@ -13,7 +13,7 @@ runs:
   using: 'composite'
   steps:
     - run: |
-        if [ "${{ runner.os }}" = "linux" ]; then
+        if [ "${{ runner.os }}" = "Linux" ]; then
            sudo apt install -y libgdbm-dev libmbedtls-dev
         fi
         # Note: OSX runner already has gdbm
