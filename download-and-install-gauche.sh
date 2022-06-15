@@ -17,7 +17,10 @@ case `uname` in
 esac
 
 if [ "$do_test" = 'true' ]; then
-    ./get-gauche.sh --sudo --auto --prefix=$prefix --version=$version $configure_opts
+    cmdline="./get-gauche.sh --sudo --auto --prefix=$prefix --version=$version $configure_opts"
 else
-    ./get-gauche.sh --sudo --auto --prefix=$prefix --version=$version --skip-tests $configure_opts
+    cmdline="./get-gauche.sh --sudo --auto --prefix=$prefix --version=$version --skip-tests $configure_opts"
 fi
+
+echo "Running $cmdline"
+$cmdline
