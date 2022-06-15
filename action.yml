@@ -8,7 +8,11 @@ inputs:
   test-gauche:
     description: "Set this true to perform integrity test for installed Gauche.  Usually unnecessary."
     required: false
-    default: 'false'
+    default: false
+  configure-options:
+    description: "Configure options, e.g. '--prefix=/home --with-slib=/usr/local'"
+    required: false
+    default: false
 runs:
   using: 'composite'
   steps:
@@ -20,5 +24,9 @@ runs:
       shell: bash
     - run: echo "${{ github.action_path }}" >> $GITHUB_PATH
       shell: bash
-    - run: download-and-install-gauche.sh ${{ inputs.gauche-version }} ${{ inputs.test-gauche }}
+    - run: |
+        download-and-install-gauche.sh \
+          "${{ inputs.gauche-version }}" \
+          "${{ inputs.test-gauche }}" \
+          "${{ inputs.configure-options }}"
       shell: bash
