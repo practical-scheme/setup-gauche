@@ -12,7 +12,7 @@ inputs:
   configure-options:
     description: "Configure options, e.g. '--prefix=/home --with-slib=/usr/local'"
     required: false
-    default: false
+    default: ''
 runs:
   using: 'composite'
   steps:
