@@ -23,7 +23,7 @@ runs:
             sudo apt install -y libgdbm-dev libmbedtls-dev ;;
           macOS)
             # Note: OSX runner already has gdbm
-            brew upadte
+            brew update
             brew install mbedtls ;;
         esac
       shell: bash
