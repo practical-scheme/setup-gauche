@@ -3,7 +3,7 @@
 This action downloads and installs [Gauche](https://practical-scheme.net/gauche/),
 so that your subsequent workflow can use it.
 
-Currently it only works on Linux (Debian, Ubuntu) and OSX platforms.
+Currently it works on Linux (Debian, Ubuntu) and OSX platforms.
 GDBM library is also installed, so that `dbm.gdbm` is available.
 
 # Usage
@@ -19,6 +19,13 @@ GDBM library is also installed, so that `dbm.gdbm` is available.
     # Whether the integrity test is performed for the installed Gauche
     # Typically you don't need this, unless you want to use unstable snapshot.
     test-gauche: false
+
+    # If you want to pass extra configure arguments to build Gauche,
+    # give them here.  Example: '--with-slib=/opt/slib --with-tls=mbedtls-internal'
+    # Note that prefix is determined by get-gauche.sh so you can't give it
+    # here.
+    configure-options: ''
+
 ```
 
 # License
