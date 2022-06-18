@@ -1,0 +1,15 @@
+name: Trigger setup-gauche-tester
+
+on: [ push ]
+
+jobs:
+  trigger-tester:
+    runs-on: ubuntu-latest
+    steps:
+    - name: Call webapi
+      run: |
+        curl -XPOST -u "${{ secrets.PAT_USERNAME }}:${{ secrets.PAT_TOKEN }}" \
+             -H "Accept:application/vnd.github.everest-preview+json" \
+             -H "Content-Type: application/json" \
+             https://api.github.com/repos/shirok/setup-gauche-tester/dispatches \
+             --data '{"event_type": "new_push"}'
