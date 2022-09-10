@@ -1,6 +1,6 @@
 name: Trigger setup-gauche-tester
 
-on: [ push ]
+on: [ push, workflow_dispatch ]
 
 jobs:
   trigger-tester:
