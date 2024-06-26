@@ -9,7 +9,7 @@ GDBM library is also installed, so that `dbm.gdbm` is available.
 # Usage
 
 ```yaml
-- uses: shirok/setup-gauche@v3
+- uses: shirok/setup-gauche@v4
   with:
     # If true, install pre-built Gauche binary instead of building from
     # the source.  Currently it is only available on ubuntu-latest
