@@ -1,0 +1,42 @@
+name: Run setup-gauche action
+
+on: [ push ]
+
+
+# We don't use cross-matrix for platform and gauche-version, for
+# we want to test specifically setup-gauche _without_ parameters
+# and _with_ parameters.
+
+jobs:
+  test-setup-latest:
+    strategy:
+      matrix:
+        platform: [ubuntu-latest, macos-12]
+    runs-on: ${{ matrix.platform }}
+    steps:
+    - uses: shirok/setup-gauche@main
+    - name: Run gosh
+      run: gosh -V
+
+  test-setup-snapshot:
+    strategy:
+      matrix:
+        platform: [ubuntu-latest, macos-12]
+    runs-on: ${{ matrix.platform }}
+    steps:
+    - uses: shirok/setup-gauche@main
+      with:
+        gauche-version: 'snapshot'
+        test-gauche: true
+        configure-options: '--with-slib=/opt'
+    - name: Run gosh
+      run: gosh -V
+
+  test-setup-binary:
+    runs-on: ubuntu-latest
+    steps:
+    - uses: shirok/setup-gauche@main
+      with:
+        prebuilt-binary: true
+    - name: Run gosh
+      run: gosh -V
