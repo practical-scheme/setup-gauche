@@ -1,6 +1,22 @@
+#!/bin/bash
+
+# download-and-install-gauche.sh VERSION TEST CONFIG-OPTS BINARY
+#
+#  If BINARY is true, we fetch a prebuilt binary.  It's a lot quicker,
+#  but available only for limited platforms and versions.
+
+# Constants
+get_gauche_url="https://raw.githubusercontent.com/practical-scheme/get-gauche/master/get-gauche.sh"
+binary_url="https://github.com/practical-scheme/setup-gauche-binary/releases/download/v1/gauche-binary-ubuntu-latest.tar.gz"
+
+# Arguments
+version=$1
+do_test=$2
+configure_opts=$3
+binary=$4
+
 opts='--sudo --auto'
 
-version=$1
 if [ -z "$version" ]; then
     version=latest
 fi
@@ -14,18 +30,21 @@ case `uname` in
 esac
 opts="$opts --prefix=$prefix"
 
-do_test=$2
 if [ "$do_test" != 'true' ]; then
     opts="$opts --skip-tests"
 fi
 
-configure_opts=$3
 if [ ! -z "$configure_opts" ]; then
     opts="$opts --configure-args='$configure_opts'"
 fi
 
-curl -f -o get-gauche.sh https://raw.githubusercontent.com/shirok/get-gauche/master/get-gauche.sh
-chmod +x get-gauche.sh
+if [ "$binary" = 'true' ]; then
+    curl -L -f -o /tmp/gauche-binary-ubuntu-latest.tar.gz $binary_url
+    sudo tar x -C / -z -v -f /tmp/gauche-binary-ubuntu-latest.tar.gz
+else
+    curl -f -o get-gauche.sh $get_gauche_url
+    chmod +x get-gauche.sh
 
-echo "Running get-gauche.sh $opts"
-echo ./get-gauche.sh $opts | /bin/bash
+    echo "Running get-gauche.sh $opts"
+    echo ./get-gauche.sh $opts | /bin/bash
+fi

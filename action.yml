@@ -13,6 +13,10 @@ inputs:
     description: "Additional configure options, e.g. '--with-tls=mbedtls-internal --with-slib=/home/slib'"
     required: false
     default: ''
+  prebuilt-binary:
+    description: "Install pre-built Gauche binary instead of building from the source.  Only available on ubuntu-latest platform, and the latest Gauche release.  When this is true, other input variables are ignored."
+    required: false
+    default: false
 runs:
   using: 'composite'
   steps:
@@ -33,5 +37,6 @@ runs:
         download-and-install-gauche.sh \
           "${{ inputs.gauche-version }}" \
           "${{ inputs.test-gauche }}" \
-          "${{ inputs.configure-options }}"
+          "${{ inputs.configure-options }}" \
+          "${{ inputs.prebuilt-binary }}"
       shell: bash
