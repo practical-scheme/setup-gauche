@@ -11,7 +11,7 @@ jobs:
   test-setup-latest:
     strategy:
       matrix:
-        platform: [ubuntu-latest, macos-12]
+        platform: [ubuntu-latest, macos-latest]
     runs-on: ${{ matrix.platform }}
     steps:
     - uses: shirok/setup-gauche@main
@@ -21,7 +21,7 @@ jobs:
   test-setup-snapshot:
     strategy:
       matrix:
-        platform: [ubuntu-latest, macos-12]
+        platform: [ubuntu-latest, macos-latest]
     runs-on: ${{ matrix.platform }}
     steps:
     - uses: shirok/setup-gauche@main
@@ -33,7 +33,10 @@ jobs:
       run: gosh -V
 
   test-setup-binary:
-    runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        platform: [ubuntu-latest, macos-latest]
+    runs-on: ${{ matrix.platform }}
     steps:
     - uses: shirok/setup-gauche@main
       with:

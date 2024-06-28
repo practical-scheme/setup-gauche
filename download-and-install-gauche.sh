@@ -7,7 +7,7 @@
 
 # Constants
 get_gauche_url="https://raw.githubusercontent.com/practical-scheme/get-gauche/master/get-gauche.sh"
-binary_url="https://github.com/practical-scheme/setup-gauche-binary/releases/download/v1/gauche-binary-ubuntu-latest.tar.gz"
+binary_url="https://github.com/practical-scheme/setup-gauche-binary/releases/download/v1"
 
 # Arguments
 version=$1
@@ -39,8 +39,21 @@ if [ ! -z "$configure_opts" ]; then
 fi
 
 if [ "$binary" = 'true' ]; then
-    curl -L -f -o /tmp/gauche-binary-ubuntu-latest.tar.gz $binary_url
-    sudo tar x -C / -z -v -f /tmp/gauche-binary-ubuntu-latest.tar.gz
+    platform=`uname -s`
+    case "$platform" in
+        Linux)
+            binary_tarball=gauche-binary-ubuntu-latest.tar.gz ;;
+        Darwin)
+            binary_tarball=gauche-binary-macos-latest.tar.gz ;;
+        *)
+            echo "Prebuilt binary is not available on this platform: $platform"
+            exit 1 ;;
+    esac
+    echo "Instaling $binary_url/$binary_tarball"
+    curl -L -f -o $binary_tarball $binary_url/$binary_tarball
+    mkdir package
+    (cd package; tar xzvf ../$binary_tarball)
+    (cd package; sudo cp -r . /)
 else
     curl -f -o get-gauche.sh $get_gauche_url
     chmod +x get-gauche.sh
