@@ -41,6 +41,6 @@ jobs:
     - uses: shirok/setup-gauche@main
       with:
         prebuilt-binary: true
-        version: 0.9.14
+        gauche-version: 0.9.14
     - name: Run gosh
       run: gosh -V
