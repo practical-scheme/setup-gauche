@@ -39,6 +39,11 @@ if [ ! -z "$configure_opts" ]; then
 fi
 
 if [ "$binary" = 'true' ]; then
+    if [ $version != 'latest' -o -n $do_test -o -n $configure_opts ]; then
+        echo "If prebuilt-binary is true, no ther option should be given."
+        exit 1
+    fi
+
     platform=`uname -s`
     case "$platform" in
         Linux)
