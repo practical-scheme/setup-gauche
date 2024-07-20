@@ -41,6 +41,5 @@ jobs:
     - uses: shirok/setup-gauche@test
       with:
         prebuilt-binary: true
-        test-gauche: false
     - name: Run gosh
       run: gosh -V
