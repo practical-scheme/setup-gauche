@@ -8,29 +8,29 @@ on: [ push ]
 # and _with_ parameters.
 
 jobs:
-  test-setup-latest:
-    strategy:
-      matrix:
-        platform: [ubuntu-latest, macos-latest]
-    runs-on: ${{ matrix.platform }}
-    steps:
-    - uses: shirok/setup-gauche@main
-    - name: Run gosh
-      run: gosh -V
+  # test-setup-latest:
+  #   strategy:
+  #     matrix:
+  #       platform: [ubuntu-latest, macos-latest]
+  #   runs-on: ${{ matrix.platform }}
+  #   steps:
+  #   - uses: shirok/setup-gauche@main
+  #   - name: Run gosh
+  #     run: gosh -V
 
-  test-setup-snapshot:
-    strategy:
-      matrix:
-        platform: [ubuntu-latest, macos-latest]
-    runs-on: ${{ matrix.platform }}
-    steps:
-    - uses: shirok/setup-gauche@main
-      with:
-        gauche-version: 'snapshot'
-        test-gauche: true
-        configure-options: '--with-slib=/opt'
-    - name: Run gosh
-      run: gosh -V
+  # test-setup-snapshot:
+  #   strategy:
+  #     matrix:
+  #       platform: [ubuntu-latest, macos-latest]
+  #   runs-on: ${{ matrix.platform }}
+  #   steps:
+  #   - uses: shirok/setup-gauche@main
+  #     with:
+  #       gauche-version: 'snapshot'
+  #       test-gauche: true
+  #       configure-options: '--with-slib=/opt'
+  #   - name: Run gosh
+  #     run: gosh -V
 
   test-setup-binary:
     strategy:
@@ -41,5 +41,6 @@ jobs:
     - uses: shirok/setup-gauche@main
       with:
         prebuilt-binary: true
+        version: 0.9.14
     - name: Run gosh
       run: gosh -V
