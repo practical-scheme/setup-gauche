@@ -9,12 +9,12 @@ GDBM library is also installed, so that `dbm.gdbm` is available.
 # Usage
 
 ```yaml
-- uses: shirok/setup-gauche@v5
+- uses: shirok/setup-gauche@v6
   with:
     # If true, install pre-built Gauche binary instead of building from
     # the source.  Currently it is available on ubuntu-latest and
     # macos-latest platforms, and the latest Gauche release.
-    # When this is true, other input variables are ignored.
+    # When this is true, other input variables shouldn't be given.
     prebuilt-binary: false
 
     # The version of Gauche to install.  Can be 'latest' for the latest
