@@ -39,6 +39,7 @@ if [ ! -z "$configure_opts" ]; then
 fi
 
 if [ "$binary" = 'true' ]; then
+    echo "#############" $opts "###############"
     if [ "$version" != 'latest' ]; then
         echo "If prebuilt-binary is true, no ther option should be given."
         exit 1
