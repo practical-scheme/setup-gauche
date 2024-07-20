@@ -38,7 +38,7 @@ jobs:
         platform: [ubuntu-latest, macos-latest]
     runs-on: ${{ matrix.platform }}
     steps:
-    - uses: shirok/setup-gauche@main
+    - uses: shirok/setup-gauche@test
       with:
         prebuilt-binary: true
         gauche-version: 0.9.14
