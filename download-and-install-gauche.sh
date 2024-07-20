@@ -39,7 +39,7 @@ if [ ! -z "$configure_opts" ]; then
 fi
 
 if [ "$binary" = 'true' ]; then
-    if [ "$version" != 'latest' -o -n "$do_test" -o -n "$configure_opts" ]; then
+    if [ "$version" != 'latest' -o "$do_test" != 'false' -o -n "$configure_opts" ]; then
         echo "If prebuilt-binary is true, no other option should be given."
         exit 1
     fi
